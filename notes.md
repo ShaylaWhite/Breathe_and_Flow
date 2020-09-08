@@ -1,7 +1,7 @@
     Breathe & Flow 
 
 
-    Classes
+    Group
         >name
         >descrpition
         >time 
@@ -23,10 +23,10 @@
 
 ----------------------------------
 
-    -has_many :classes
+    -has_many :groups
     -has_many :reviews
-    -has_many :class_reviews, throught :reviews 
-    ** has_many :studios, through :classes 
+    -has_many :group_reviews, through :reviews 
+    ** has_many :studios, through :groups
 
 
 
@@ -36,20 +36,20 @@
     Reviews
         >message
         >user_id
-        >class_id
+        >group_id
 -------------------------------------------
 
     -belongs_to :user
-    -belongs_to :class
+    -belongs_to :group
 
 
 <<>>>>>STRETCH GOAL <<<<>>>>
     Studios
         >name
-        >class_id
+        >group_id
 
         -has_many :posts
-        -has_mnay :users, through classes 
+        -has_mnay :users, through groups
 
 
 
