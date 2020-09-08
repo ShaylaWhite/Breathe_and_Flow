@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :studios
+  
+  get '/signup' => ''
+
+
+
   resources :reviews
   resources :users
   resources :groups
