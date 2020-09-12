@@ -1,6 +1,14 @@
 class ReviewsController < ApplicationController
     before_action :require_login
 
+    def index
+      if params[:group_id] && @group = Group.find_by_id(params[:group_id])
+         @groups = @group.reviews
+      else
+        @reviews = Reviews.all
+      end
+    end
+
     def new
        @review = Review.new
     end
@@ -13,6 +21,10 @@ class ReviewsController < ApplicationController
        else
           render :new
        end 
+    end 
+
+    def show 
+      @review = Review.find_by(id: parmas[:id]) 
     end 
  
  private
