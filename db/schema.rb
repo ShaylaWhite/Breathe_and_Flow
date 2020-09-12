@@ -10,31 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_08_010948) do
+ActiveRecord::Schema.define(version: 2020_09_12_204606) do
 
   create_table "groups", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.time "time"
-    t.integer "user_id", null: false
-    t.integer "studio_id", null: false
+    t.integer "user_id"
+    t.integer "type_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["studio_id"], name: "index_groups_on_studio_id"
+    t.index ["type_id"], name: "index_groups_on_type_id"
     t.index ["user_id"], name: "index_groups_on_user_id"
   end
 
-  create_table "reviews", force: :cascade do |t|
-    t.string "name"
+  create_table "reviewss", force: :cascade do |t|
+    t.string "review"
     t.integer "user_id"
     t.integer "group_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["group_id"], name: "index_reviews_on_group_id"
-    t.index ["user_id"], name: "index_reviews_on_user_id"
+    t.index ["group_id"], name: "index_reviewss_on_group_id"
+    t.index ["user_id"], name: "index_reviewss_on_user_id"
   end
 
-  create_table "studios", force: :cascade do |t|
+  create_table "types", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -48,6 +48,8 @@ ActiveRecord::Schema.define(version: 2020_09_08_010948) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "groups", "studios"
+  add_foreign_key "groups", "types"
   add_foreign_key "groups", "users"
+  add_foreign_key "reviewss", "groups"
+  add_foreign_key "reviewss", "users"
 end

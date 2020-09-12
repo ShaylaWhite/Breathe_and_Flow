@@ -10,6 +10,9 @@ Rails.application.routes.draw do
 
   delete '/logout' => 'sessions#destroy'
 
+  get '/group' => 'groups#new'
+  post 'group' => 'groups#create'
+
 
   resources :reviews
   resources :users
