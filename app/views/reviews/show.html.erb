@@ -1,0 +1,14 @@
+<h1><%=@group.name%</h1>
+<h2>By: <%=@group.user.username%> </h2>
+
+<div><% @group.description%></div>
+
+<p><%= link_to 'See all reviewS' group_reviews_path(@group%></p>
+
+<h4>Reviews</h2>
+
+<% @group.reviews.each do |r| %>
+    <li><%= r.user.username%> has this to say "<% link_to r.review, review_path(r)%>"</li>
+
+
+<%end %>

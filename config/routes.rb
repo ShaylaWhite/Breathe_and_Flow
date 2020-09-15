@@ -10,12 +10,13 @@ Rails.application.routes.draw do
 
   delete '/logout' => 'sessions#destroy'
 
-  get '/group' => 'groups#new'
-  post 'group' => 'groups#create'
-
-
-  resources :reviews
   resources :users
-  resources :groups
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-end
+
+  resources :studios, only: [:new, :index, :create]
+  resources :reviews
+  
+  resources :groups do
+    resources :reviews, only: [:new, :index]
+  end
+
+end 

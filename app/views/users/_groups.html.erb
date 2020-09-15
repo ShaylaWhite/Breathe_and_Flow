@@ -1,0 +1,16 @@
+<% @user.groups.each do |g| %>
+    <div>
+        <h4>Name - <%= g.name %><br></h4>
+        <h4>Description -<%= g.description %><br>
+        <h4>Time -<%= g.time %> Minutes<br>
+        
+    <%= link_to "Show group/Reviews", group_path(g.id) %>
+    <br>
+    <%= link_to "Edit Group", edit_group_path(g.id) if g.user_id == session[:user_id] %>
+    <br>
+    <%= link_to "Delete Group", group_path(g), :confirm => "Are you sure?", :method => :delete if g.user_id == session[:user_id] %>
+    <br>
+    <%= link_to "Leave A rEVIEW", new_GROUP_comment_path(G.id) %>
+    </div>
+      
+<% end %>

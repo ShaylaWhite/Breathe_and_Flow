@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_12_204606) do
+ActiveRecord::Schema.define(version: 2020_09_12_223349) do
 
   create_table "groups", force: :cascade do |t|
     t.string "name"
@@ -24,14 +24,14 @@ ActiveRecord::Schema.define(version: 2020_09_12_204606) do
     t.index ["user_id"], name: "index_groups_on_user_id"
   end
 
-  create_table "reviewss", force: :cascade do |t|
+  create_table "reviews", force: :cascade do |t|
     t.string "review"
     t.integer "user_id"
     t.integer "group_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["group_id"], name: "index_reviewss_on_group_id"
-    t.index ["user_id"], name: "index_reviewss_on_user_id"
+    t.index ["group_id"], name: "index_reviews_on_group_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "types", force: :cascade do |t|
@@ -50,6 +50,6 @@ ActiveRecord::Schema.define(version: 2020_09_12_204606) do
 
   add_foreign_key "groups", "types"
   add_foreign_key "groups", "users"
-  add_foreign_key "reviewss", "groups"
-  add_foreign_key "reviewss", "users"
+  add_foreign_key "reviews", "groups"
+  add_foreign_key "reviews", "users"
 end
