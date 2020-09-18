@@ -1,12 +1,24 @@
-<h1>Leave a Review</h1>
 
-<%= form_for @review do |f| %>
 
-    <%= f.label :review %>
-    <%=  f.text_field :review %>
-       <br>
-           <br>
 
-    <%= f.submit "Submit" %>
+
+<%= form_for(@review) do |f|%>
+  <% if params[:group_id] %>
+    <%= f.hidden_field :group_id %>
+  <% else %>
+    <div>
+      <%= f.label :group_id, "Select a Group" %>
+    
+    </div>
+  <% end %>
+
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :review  %>
+  </div>
+  
+
+
+  <%= f.submit %>
 
 <% end %>

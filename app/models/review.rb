@@ -5,3 +5,4 @@ class Review < ApplicationRecord
     
     #join table, has two belongs to
 end
+#collection
