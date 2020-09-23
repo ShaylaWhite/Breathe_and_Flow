@@ -1,11 +1,6 @@
 <%= form_tag groups_path do %>
        <%= render 'form' %>
-       <%= link_to  "Cancel", user_path(session[:user_id]) %>
+ <% end %>    
 <br>
 
-<p>Add a Review & Goals For Your Group</p>
 
-<div>
-<%= f.collection_select %>
-</div>
-<% end %>

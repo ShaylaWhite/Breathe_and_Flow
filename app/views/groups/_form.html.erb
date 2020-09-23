@@ -8,27 +8,39 @@
         <%= f.label :description %>
         <%= f.text_field :description %>
     </div>
-
+    <br>
     <div>
         <%= f.label :time %>
-        <%= f.number_field :time, min:30, max: 90 %>
+        <%= f.time_select :time,
+        {ampm: true,
+        ignore_date: true,
+        start_hour: 10, 
+        end_hour: 18,
+        discard_minute: true,
+        prompt: true,
+        prompt: { hour: "Choose hr" }
+        } %>
+    </div>
+    <br>
+
+    <div>
+     What type of session is this group?
+    
+    <%= f.collection_select :type_id, Type.all, :id, :name %> 
+    </div>
+    <br>
+    <div>
+     If new type of group session, please enter:
+    <br>
+    <br>
+    <%= f.fields_for :type do |t| %> 
+        <%= t.label :name %>
+        <%= t.text_field :name %>
+    <% end %>
     </div>
 
-        <%= f. submit %>
-        <p>Add A Review:</p>
-        <div>
-            <%= f.fields_for :review do |m| %>
-                <%= m.label :name %>
-                <%= m.text_field :name %>
-            <datalist id="review_name">
-                <% Review.all.each do |c| %>
-               <option value = "<%= r.name %>"  ></option>
-                <% end %>
-            </datalist>
-            <br>
-            <% end %>
-        </div>
-            <%= f. submit %>
+    <br>
+    <%= f.submit %>
 
 <% end %>
 
