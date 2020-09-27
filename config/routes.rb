@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :users
 
-  resources :studios, only: [:new, :index, :create]
+  resources :types, only: [:new, :index, :create]
   resources :reviews
   
   resources :groups do

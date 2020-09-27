@@ -12,14 +12,8 @@
     <div>
         <%= f.label :time %>
         <%= f.time_select :time,
-        {ampm: true,
-        ignore_date: true,
-        start_hour: 10, 
-        end_hour: 18,
-        discard_minute: true,
-        prompt: true,
         prompt: { hour: "Choose hr" }
-        } %>
+         %>
     </div>
     <br>
 

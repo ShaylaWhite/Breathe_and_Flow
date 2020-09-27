@@ -1,34 +1,28 @@
- <%= render 'filter' %>
- 
- 
- <%= form_for(groups_path, method: :get) do |f| %>
-  <%= f.label :name %>
-  <%= f.search_field (:name) %>
-  <%= f.submit "Submit" %>
-  <% end %>
 
-  
+  <div>
   <h3>All of Your Groups!</h3>
-  </div>
-  <hr>
-    <% @groups.each do |w| %>
+  
+
+    <% @groups.each do |g| %>
     
     <h3>Name - <%= g.user.username %></h3>
 
-    <h5>Title of Group - <%= g.title %></h5>
+    <h5>Title of Group - <%= g.name %></h5>
+    <h5>Type of Group - <%= g.type.name %></h5>
     <h5>Description of Group -  <%= g.description %> </h5>
-    <h5>Time of Group -  <%= g.time %> Minutes</h5>
-    
-    <br>
-    <%= link_to "Show Group", group_path(g.id) %>
-    <br>
-    <%= link_to "Edit Group", edit_group_path(g.id) if g.user_id == session[:user_id] %>
-    <br>
-    <%= link_to "Delete Group", group_path(g), :confirm => "Are you sure?", :method => :delete if g.user_id == session[:user_id] %>
-    <br>
-    <%= link_to "Add a Review", new_group_review_path(g.id) %>
+    <h5>Time of Group -  <%= g.time %> Hour</h5>
     </div>
-    <hr>
+    <br> 
+    <div>
+    <%= link_to "Show Group", group_path(g.id) %>
+    
+    <%= link_to "Edit Group", edit_group_path(g.id) if g.user_id == session[:user_id] %>
+    
+    <%= link_to "Delete Group", group_path(g), :confirm => "Are you sure?", :method => :delete if g.user_id == session[:user_id] %>
+  
+    <%= link_to "Add a Review", new_group_review_path(g.id) %>
+    
+    </div>
     <% end %>
 
 

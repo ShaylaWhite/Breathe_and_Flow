@@ -1,15 +1,11 @@
-<% if @group %>
-  <h1>Reviewss for <%= @group.name %> - <%= @group.type %></h1>
-<% else %>
-  <h1>All the Reviews </h1>
-<% end %>
 
-<ul>
-<% @reviews.each do |review| %>
+<h1>All Reviews for </h1>
 
-  <li>
-  <%= review.groupa.name%>: <%= link_to review.review, review_path(review)%>  
-  </li> <br>
+<ol>
+<% @reviews.each do |r| %>
+  
+<li>  <%= r.group.name%> - <%= r.review %> </li>
+  
 
 <% end %>
-</ul>
+</ol>

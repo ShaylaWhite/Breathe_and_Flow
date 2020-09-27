@@ -1,30 +1,29 @@
 class GroupsController < ApplicationController
-   before_action :require_login
-   before_action :set_group, only: [:edit, :update, :show, :destroy]
-   
+
+def new
+       @group = Group.new     
+       @group.build_type
+   end
+
 
    def index
       @groups = Group.all
    end
 
    
-   def new
-       @group = Group.new     
-       @group.build_type
-   end
-
+   
    def create 
        @group = Group.new(group_params)
        @group.user_id = session[:user_id]
            if @group.save
-               redirect_to group_path(@group)
+            redirect_to group_path(@group)
            else
                render :new
            end
    end
 
    def show
-       @comments = @group.comments
+    
    end
 
    def edit
@@ -54,12 +53,9 @@ class GroupsController < ApplicationController
 
 
    def group_params
-       params.require(:group).permit(:title, :description, :time, :difficulty, category_attributes: [:name])
+       params.require(:group).permit(:description, :time, :type_id, type_attributes: [:name])
    end
 
-   def set_group
-       @group = group.find_by(id: params[:id])
-   end
 
 
 end

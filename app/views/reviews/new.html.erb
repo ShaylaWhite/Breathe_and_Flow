@@ -1,24 +1,22 @@
+<% if params[:group_id] %>
 
 
-
-
+<h1>Please Review Your Group Session - <%= @review.group.name %></h1>
+<% else  %>
+ <h3> Add A New Review </h3>
+<% end %>
 <%= form_for(@review) do |f|%>
-  <% if params[:group_id] %>
-    <%= f.hidden_field :group_id %>
-  <% else %>
-    <div>
-      <%= f.label :group_id, "Select a Group" %>
-    
-    </div>
-  <% end %>
 
   <div>
-    <%= f.label :name %>
-    <%= f.text_field :review  %>
+ <%= f.label :Review %>
+ <br>
+ <br>
+    <%= f.text_area :review  %>
   </div>
   
+ <%= f.hidden_field :group_id %>
 
-
+ <br>
   <%= f.submit %>
 
 <% end %>

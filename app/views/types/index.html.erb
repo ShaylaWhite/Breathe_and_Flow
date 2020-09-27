@@ -1,9 +1,8 @@
-<div>
+  
+<h1>All of the Types of Group Sessionss</h1>
 
-
-<% @users.each do |u| %>
-<h3><%= check_image(u)%> User - <%= u.username %></h3>
-
-</div>
-
-<% end %>
+<ol>
+  <% @types.each do |t| %>
+    <li><%= t.name%></li>
+  <% end %>
+</ol>
