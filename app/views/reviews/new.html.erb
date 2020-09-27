@@ -5,6 +5,14 @@
 <% else  %>
  <h3> Add A New Review </h3>
 <% end %>
+
+<%= render 'layouts/errors' %>, locals: (@message: @review) %>
+
+
+
+
+
+
 <%= form_for(@review) do |f|%>
 
   <div>
